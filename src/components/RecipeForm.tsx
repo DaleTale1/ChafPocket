@@ -12,16 +12,16 @@ import { toast } from "@/hooks/use-toast";
 import { Trash2, PlusCircle, UploadCloud } from "lucide-react";
 
 const recipeSchema = z.object({
-  name: z.string().min(3, "Recipe name must be at least 3 characters long."),
-  imageUrl: z.string().url("Please enter a valid image URL.").or(z.literal("")),
+  name: z.string().min(3, "שם המתכון חייב להכיל לפחות 3 תווים."),
+  imageUrl: z.string().url("אנא הזן כתובת URL חוקית של תמונה.").or(z.literal("")),
   ingredients: z.array(
     z.object({
-      name: z.string().min(1, "Ingredient name cannot be empty."),
+      name: z.string().min(1, "שם המרכיב לא יכול להיות ריק."),
     })
-  ).min(1, "Please add at least one ingredient."),
+  ).min(1, "אנא הוסף לפחות מרכיב אחד."),
   tags: z.array(
     z.object({
-      value: z.string().min(1, "Tag cannot be empty."),
+      value: z.string().min(1, "תגית לא יכולה להיות ריקה."),
     })
   ),
 });
@@ -68,8 +68,8 @@ export function RecipeForm({ onFormSubmit, onDone, existingRecipe }: RecipeFormP
     };
     onFormSubmit(submittedData);
     toast({
-        title: `Recipe ${existingRecipe ? 'updated' : 'added'}!`,
-        description: `Successfully ${existingRecipe ? 'updated' : 'added'} "${data.name}".`,
+        title: `המתכון ${existingRecipe ? 'עודכן' : 'נוסף'}!`,
+        description: `"${data.name}" ${existingRecipe ? 'עודכן' : 'נוסף'} בהצלחה.`,
     })
     onDone();
   };
@@ -84,9 +84,9 @@ export function RecipeForm({ onFormSubmit, onDone, existingRecipe }: RecipeFormP
                 name="name"
                 render={({ field }) => (
                     <FormItem>
-                    <FormLabel>Recipe Name</FormLabel>
+                    <FormLabel>שם המתכון</FormLabel>
                     <FormControl>
-                        <Input placeholder="e.g., Grandma's Apple Pie" {...field} />
+                        <Input placeholder="לדוגמה, עוגת התפוחים של סבתא" {...field} />
                     </FormControl>
                     <FormMessage />
                     </FormItem>
@@ -94,7 +94,7 @@ export function RecipeForm({ onFormSubmit, onDone, existingRecipe }: RecipeFormP
                 />
 
                 <div className="space-y-2">
-                    <FormLabel>Ingredients</FormLabel>
+                    <FormLabel>מצרכים</FormLabel>
                     {ingredientFields.map((field, index) => (
                         <div key={field.id} className="flex items-center gap-2">
                             <FormField
@@ -103,7 +103,7 @@ export function RecipeForm({ onFormSubmit, onDone, existingRecipe }: RecipeFormP
                             render={({ field }) => (
                                 <FormItem className="flex-grow">
                                 <FormControl>
-                                    <Input placeholder={`Ingredient ${index + 1}`} {...field} />
+                                    <Input placeholder={`מצרך ${index + 1}`} {...field} />
                                 </FormControl>
                                 <FormMessage />
                                 </FormItem>
@@ -115,7 +115,7 @@ export function RecipeForm({ onFormSubmit, onDone, existingRecipe }: RecipeFormP
                         </div>
                     ))}
                     <Button type="button" variant="outline" size="sm" onClick={() => appendIngredient({ name: "" })}>
-                        <PlusCircle className="mr-2 h-4 w-4" /> Add Ingredient
+                        <PlusCircle className="ml-2 h-4 w-4" /> הוסף מצרך
                     </Button>
                 </div>
             </div>
@@ -126,7 +126,7 @@ export function RecipeForm({ onFormSubmit, onDone, existingRecipe }: RecipeFormP
                     name="imageUrl"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Image URL</FormLabel>
+                            <FormLabel>כתובת URL של תמונה</FormLabel>
                             <FormControl>
                                 <Input placeholder="https://example.com/image.png" {...field} />
                             </FormControl>
@@ -136,7 +136,7 @@ export function RecipeForm({ onFormSubmit, onDone, existingRecipe }: RecipeFormP
                 />
 
                 <div className="space-y-2">
-                    <FormLabel>Tags</FormLabel>
+                    <FormLabel>תגיות</FormLabel>
                     <div className="flex flex-wrap gap-2">
                         {tagFields.map((field, index) => (
                             <div key={field.id} className="flex items-center gap-1 bg-secondary rounded-full px-3 py-1">
@@ -146,7 +146,7 @@ export function RecipeForm({ onFormSubmit, onDone, existingRecipe }: RecipeFormP
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormControl>
-                                            <Input className="bg-transparent border-none h-6 p-0 focus-visible:ring-0" placeholder="tag" {...field} />
+                                            <Input className="bg-transparent border-none h-6 p-0 focus-visible:ring-0" placeholder="תגית" {...field} />
                                         </FormControl>
                                     </FormItem>
                                 )}
@@ -158,7 +158,7 @@ export function RecipeForm({ onFormSubmit, onDone, existingRecipe }: RecipeFormP
                         ))}
                     </div>
                      <Button type="button" variant="outline" size="sm" onClick={() => appendTag({ value: "" })}>
-                        <PlusCircle className="mr-2 h-4 w-4" /> Add Tag
+                        <PlusCircle className="ml-2 h-4 w-4" /> הוסף תגית
                     </Button>
                 </div>
 
@@ -166,8 +166,8 @@ export function RecipeForm({ onFormSubmit, onDone, existingRecipe }: RecipeFormP
         </div>
 
         <div className="flex justify-end gap-2">
-            <Button type="button" variant="ghost" onClick={onDone}>Cancel</Button>
-            <Button type="submit">Save Recipe</Button>
+            <Button type="button" variant="ghost" onClick={onDone}>ביטול</Button>
+            <Button type="submit">שמור מתכון</Button>
         </div>
       </form>
     </Form>

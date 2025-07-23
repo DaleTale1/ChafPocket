@@ -10,43 +10,43 @@ import { Search } from 'lucide-react';
 const initialRecipes: Recipe[] = [
   {
     id: '1',
-    name: 'Classic Spaghetti Carbonara',
+    name: 'ספגטי קרבונרה קלאסי',
     ingredients: [
-      { id: 'i1', name: 'Spaghetti', checked: false },
-      { id: 'i2', name: 'Guanciale', checked: false },
-      { id: 'i3', name: 'Eggs', checked: false },
-      { id: 'i4', name: 'Pecorino Romano Cheese', checked: false },
-      { id: 'i5', name: 'Black Pepper', checked: false },
+      { id: 'i1', name: 'ספגטי', checked: false },
+      { id: 'i2', name: 'גואנצ\'לה', checked: false },
+      { id: 'i3', name: 'ביצים', checked: false },
+      { id: 'i4', name: 'גבינת פקורינו רומנו', checked: false },
+      { id: 'i5', name: 'פלפל שחור', checked: false },
     ],
-    tags: ['pasta', 'italian', 'classic'],
+    tags: ['פסטה', 'איטלקי', 'קלאסי'],
     imageUrl: 'https://placehold.co/600x400.png',
     createdAt: new Date(),
   },
   {
     id: '2',
-    name: 'Avocado Toast with a Twist',
+    name: 'טוסט אבוקדו עם טוויסט',
     ingredients: [
-      { id: 'i1', name: 'Sourdough Bread', checked: false },
-      { id: 'i2', name: 'Avocado', checked: false },
-      { id: 'i3', name: 'Red Pepper Flakes', checked: false },
-      { id: 'i4', name: 'Lemon Juice', checked: false },
-      { id: 'i5', name: 'Feta Cheese', checked: false },
+      { id: 'i1', name: 'לחם מחמצת', checked: false },
+      { id: 'i2', name: 'אבוקדו', checked: false },
+      { id: 'i3', name: 'פתיתי צ\'ילי', checked: false },
+      { id: 'i4', name: 'מיץ לימון', checked: false },
+      { id: 'i5', name: 'גבינת פטה', checked: false },
     ],
-    tags: ['breakfast', 'healthy', 'vegetarian'],
+    tags: ['ארוחת בוקר', 'בריא', 'צמחוני'],
     imageUrl: 'https://placehold.co/600x400.png',
     createdAt: new Date(new Date().setDate(new Date().getDate() - 1)),
   },
   {
     id: '3',
-    name: 'Spicy Thai Green Curry',
+    name: 'קארי ירוק תאילנדי חריף',
     ingredients: [
-      { id: 'i1', name: 'Chicken Breast', checked: false },
-      { id: 'i2', name: 'Green Curry Paste', checked: false },
-      { id: 'i3', name: 'Coconut Milk', checked: false },
-      { id: 'i4', name: 'Bamboo Shoots', checked: false },
-      { id: 'i5', name: 'Thai Basil', checked: false },
+      { id: 'i1', name: 'חזה עוף', checked: false },
+      { id: 'i2', name: 'משחת קארי ירוק', checked: false },
+      { id: 'i3', name: 'חלב קוקוס', checked: false },
+      { id: 'i4', name: 'נצרי במבוק', checked: false },
+      { id: 'i5', name: 'בזיליקום תאילנדי', checked: false },
     ],
-    tags: ['thai', 'spicy', 'curry'],
+    tags: ['תאילנדי', 'חריף', 'קארי'],
     imageUrl: 'https://placehold.co/600x400.png',
     createdAt: new Date(new Date().setDate(new Date().getDate() - 2)),
   },
@@ -101,11 +101,11 @@ export default function Home() {
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="max-w-3xl mx-auto mb-8">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
               type="search"
-              placeholder="Search recipes by name or tag..."
-              className="pl-10 w-full h-12 text-lg rounded-full shadow-sm"
+              placeholder="חפש מתכונים לפי שם או תגית..."
+              className="pr-10 w-full h-12 text-lg rounded-full shadow-sm"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -126,15 +126,15 @@ export default function Home() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <h2 className="text-2xl font-semibold text-muted-foreground">No recipes found</h2>
+            <h2 className="text-2xl font-semibold text-muted-foreground">לא נמצאו מתכונים</h2>
             <p className="mt-2 text-muted-foreground">
-              Try a different search term or add a new recipe!
+              נסה מונח חיפוש אחר או הוסף מתכון חדש!
             </p>
           </div>
         )}
       </main>
       <footer className="text-center py-4 text-sm text-muted-foreground">
-        <p>Pocket Chef &copy; {new Date().getFullYear()}</p>
+        <p>שף כיס &copy; {new Date().getFullYear()}</p>
       </footer>
     </div>
   );

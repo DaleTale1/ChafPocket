@@ -4,8 +4,8 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Pocket Chef',
-  description: 'Your personal recipe assistant',
+  title: 'שף כיס',
+  description: 'עוזר המתכונים האישי שלך',
 };
 
 export default function RootLayout({

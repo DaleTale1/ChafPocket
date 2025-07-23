@@ -23,32 +23,32 @@ export function SettingsSheet() {
         <Label htmlFor="theme-toggle" className="flex items-center gap-2">
             <Sun className="h-5 w-5 transition-all scale-100 rotate-0 dark:-rotate-90 dark:scale-0" />
             <Moon className="absolute h-5 w-5 transition-all scale-0 rotate-90 dark:rotate-0 dark:scale-100" />
-            <span className="ml-8">Theme</span>
+            <span className="mr-8">ערכת נושא</span>
         </Label>
         <Select value={theme} onValueChange={setTheme}>
           <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select theme" />
+            <SelectValue placeholder="בחר ערכת נושא" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="light">Light</SelectItem>
-            <SelectItem value="dark">Dark</SelectItem>
-            <SelectItem value="system">System</SelectItem>
+            <SelectItem value="light">בהיר</SelectItem>
+            <SelectItem value="dark">כהה</SelectItem>
+            <SelectItem value="system">מערכת</SelectItem>
           </SelectContent>
         </Select>
       </div>
       <div className="flex items-center justify-between">
         <Label htmlFor="text-size-toggle" className="flex items-center gap-2">
           <CaseSensitive className="h-5 w-5" />
-          <span>Text Size</span>
+          <span>גודל טקסט</span>
         </Label>
          <Select value={textSize} onValueChange={(value) => setTextSize(value as 'small' | 'medium' | 'large')}>
           <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select size" />
+            <SelectValue placeholder="בחר גודל" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="small">Small</SelectItem>
-            <SelectItem value="medium">Medium</SelectItem>
-            <SelectItem value="large">Large</SelectItem>
+            <SelectItem value="small">קטן</SelectItem>
+            <SelectItem value="medium">בינוני</SelectItem>
+            <SelectItem value="large">גדול</SelectItem>
           </SelectContent>
         </Select>
       </div>

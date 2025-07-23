@@ -51,7 +51,7 @@ export function RecipeCard({ recipe, setRecipe, onUpdate, onDelete }: RecipeCard
         <div className="p-6 pb-2">
             <CardTitle className="text-xl font-headline">{recipe.name}</CardTitle>
             <CardDescription className="pt-2">
-                {new Date(recipe.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                {new Date(recipe.createdAt).toLocaleDateString('he-IS', { year: 'numeric', month: 'long', day: 'numeric' })}
             </CardDescription>
         </div>
       </CardHeader>
@@ -63,7 +63,7 @@ export function RecipeCard({ recipe, setRecipe, onUpdate, onDelete }: RecipeCard
         </div>
         <Accordion type="single" collapsible>
           <AccordionItem value="ingredients">
-            <AccordionTrigger>Ingredients</AccordionTrigger>
+            <AccordionTrigger>מצרכים</AccordionTrigger>
             <AccordionContent>
               <div className="space-y-2">
                 {recipe.ingredients.map((ingredient) => (
@@ -90,12 +90,12 @@ export function RecipeCard({ recipe, setRecipe, onUpdate, onDelete }: RecipeCard
         <Dialog open={isEditOpen} onOpenChange={setEditOpen}>
           <DialogTrigger asChild>
             <Button variant="outline" size="sm">
-              <FilePenLine className="mr-2 h-4 w-4" /> Edit
+              <FilePenLine className="ml-2 h-4 w-4" /> ערוך
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-2xl">
             <DialogHeader>
-              <DialogTitle>Edit Recipe</DialogTitle>
+              <DialogTitle>ערוך מתכון</DialogTitle>
             </DialogHeader>
             <RecipeForm
               onFormSubmit={onUpdate}
@@ -108,19 +108,19 @@ export function RecipeCard({ recipe, setRecipe, onUpdate, onDelete }: RecipeCard
         <AlertDialog>
             <AlertDialogTrigger asChild>
                 <Button variant="destructive" size="sm">
-                    <Trash2 className="mr-2 h-4 w-4" /> Delete
+                    <Trash2 className="ml-2 h-4 w-4" /> מחק
                 </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                    <AlertDialogTitle>האם אתה בטוח?</AlertDialogTitle>
                     <AlertDialogDescription>
-                        This action cannot be undone. This will permanently delete the recipe for "{recipe.name}".
+                        לא ניתן לבטל פעולה זו. פעולה זו תמחק לצמיתות את המתכון "{recipe.name}".
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => onDelete(recipe.id)}>Continue</AlertDialogAction>
+                    <AlertDialogCancel>ביטול</AlertDialogCancel>
+                    <AlertDialogAction onClick={() => onDelete(recipe.id)}>המשך</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

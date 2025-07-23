@@ -33,8 +33,8 @@ export function TimerDialog() {
     } else if (totalSeconds === 0 && isActive) {
       setIsActive(false);
       toast({
-        title: 'Time\'s up!',
-        description: 'Your timer has finished.',
+        title: 'הזמן נגמר!',
+        description: 'הטיימר שלך הסתיים.',
       });
       audioRef.current?.play().catch(e => console.error("Error playing audio:", e));
     }
@@ -65,12 +65,12 @@ export function TimerDialog() {
       <DialogTrigger asChild>
         <Button variant="ghost" size="icon">
           <Timer className="h-5 w-5" />
-          <span className="sr-only">Open Timer</span>
+          <span className="sr-only">פתח טיימר</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Kitchen Timer</DialogTitle>
+          <DialogTitle>טיימר מטבח</DialogTitle>
         </DialogHeader>
         <div className="flex flex-col items-center justify-center space-y-6 py-8">
             <div className="text-8xl font-mono font-bold text-primary tracking-tighter">
@@ -78,22 +78,22 @@ export function TimerDialog() {
             </div>
             <div className="flex items-center space-x-4">
                 <div className="grid w-24 items-center gap-1.5">
-                    <Label htmlFor="minutes">Minutes</Label>
+                    <Label htmlFor="minutes">דקות</Label>
                     <Input id="minutes" type="number" value={initialMinutes} onChange={(e) => setInitialMinutes(Number(e.target.value))} min="0" max="999" disabled={isActive} />
                 </div>
                 <div className="grid w-24 items-center gap-1.5">
-                    <Label htmlFor="seconds">Seconds</Label>
+                    <Label htmlFor="seconds">שניות</Label>
                     <Input id="seconds" type="number" value={initialSeconds} onChange={(e) => setInitialSeconds(Number(e.target.value))} min="0" max="59" disabled={isActive}/>
                 </div>
             </div>
             <div className="flex items-center space-x-4">
                 <Button size="lg" variant={isActive ? "outline" : "default"} onClick={isActive ? () => setIsActive(false) : handleStart}>
-                    {isActive ? <Pause className="mr-2 h-5 w-5" /> : <Play className="mr-2 h-5 w-5" />}
-                    {isActive ? 'Pause' : 'Start'}
+                    {isActive ? <Pause className="ml-2 h-5 w-5" /> : <Play className="ml-2 h-5 w-5" />}
+                    {isActive ? 'השהה' : 'התחל'}
                 </Button>
                 <Button size="lg" variant="ghost" onClick={handleReset}>
-                    <RotateCcw className="mr-2 h-5 w-5" />
-                    Reset
+                    <RotateCcw className="ml-2 h-5 w-5" />
+                    אפס
                 </Button>
             </div>
         </div>
